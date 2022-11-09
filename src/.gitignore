@@ -1,7 +1,11 @@
+# Data
 *.mp3
 *.mp4
 
+!BadApple.mp3
+!BadApple.mp4
 
+# fcp
 *.fcbundle
 BadApple.fcpbundle
 BadApple.fcpbundle/*
