@@ -46,5 +46,12 @@
     "display": [960, 700],
     "char_size": 104,
     "line_delta": 61.76
+  },
+
+  "const": {
+    "p_f": ["src", "frames"],
+    "f_m": ["src", "BadApple.mp3"],
+    "prefix": "frame-",
+    "suffix": ".png"
   }
 }

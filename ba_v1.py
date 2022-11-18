@@ -94,7 +94,7 @@ def exit_statement(i: int) -> None:
 
 
 def main(*args, **kwargs) -> None:
-    path,   p_m = kwargs['path'], kwargs['p_m']
+    p_f,   f_m = kwargs['p_f'], kwargs['f_m']
     prefix, suffix = kwargs['prefix'], kwargs['suffix']
     for a in args:
         width, display, char_size, line_delta = a
@@ -104,13 +104,13 @@ def main(*args, **kwargs) -> None:
     screen = pg.display.set_mode(display)
     f = pg.font.SysFont('lucidaconsole', char_size)
     mC = pg.time.Clock()
-    pg.mixer.music.load(p_m)
+    pg.mixer.music.load(f_m)
     pg.mixer.music.play()
 
     i = 0
     while 1:
         n = '{:0>6}'.format(i)
-        p = path / f'{prefix}{n}{suffix}'
+        p = p_f / f'{prefix}{n}{suffix}'
 
         ascii_i = get_ascii_i(p, width)
         exit_statement(int(ascii_i)) if ascii_i == '-1' else ...
@@ -132,10 +132,17 @@ if __name__ == '__main__':
     with open('set.json', 'r') as f:
         _settings = json.load(f)
 
+    f_music = Path(os.getcwd())
+    for i in range(len(_settings['const']['f_m'])):
+        f_music /= _settings['const']['f_m'][i]
+    p_frames = Path(os.getcwd())
+    for i in range(len(_settings['const']['p_f'])):
+        p_frames /= _settings['const']['p_f'][i]
+
     main(
         [a for a in _settings['small'].values()],
-        path=Path(os.getcwd()) / 'src' / 'frames',
-        prefix='frame-',
-        suffix='.png',
-        p_m=Path(os.getcwd()) / 'src' / 'BadApple.mp3',
+        p_f=p_frames,
+        prefix=_settings['const']['prefix'],
+        suffix=_settings['const']['suffix'],
+        f_m=f_music,
     )
