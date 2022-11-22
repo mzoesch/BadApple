@@ -51,6 +51,7 @@
   "const": {
     "p_f": ["src", "frames"],
     "f_m": ["src", "BadApple.mp3"],
+    "f_v": ["src", "BadApple.mp4"],
     "prefix": "frame-",
     "suffix": ".png"
   }

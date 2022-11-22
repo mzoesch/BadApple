@@ -25,7 +25,7 @@ def resize(i: Image, new_w: int) -> Image:
 
 def i_to_ascii(i: Image) -> str:
 
-    ASCII_CHARS = ['@', '#', 'S', '%', '?', '*', '+', ';', ':', ',', '.']
+    ASCII_CHARS = ['.', ',', ':', ';', '+', '*', '?', '%', 'S', '#', '@']
 
     px = i.getdata()
     return ''.join([ASCII_CHARS[pixel // 25] for pixel in px])
